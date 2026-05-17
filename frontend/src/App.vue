@@ -5,7 +5,7 @@
     <!-- CARDS -->
      <div class="cards">
       <div class="card">
-        <h2>Treat Requests</h2>
+        <h2>Threat Requests</h2>
         <p>128</p>
       </div>
 
@@ -42,25 +42,25 @@
           <tr>
             <td>192.168.1.0</td>
             <td>US</td>
-            <td>82</td>
+            <td><span class="risk high">82</span></td>
             <td>true</td>
-            <td>flagged</td>
+            <td><span class="status flagged">flagged</span></td>
           </tr>
 
           <tr>
             <td>10.0.0.5</td>
             <td>UK</td>
-            <td>35</td>
+            <td><span class="risk low">35</span></td>
             <td>false</td>
-            <td>clean</td>
+            <td><span class="status clean">clean</span></td>
           </tr>
 
           <tr>
             <td>172.16.0.9</td>
             <td>DE</td>
-            <td>67</td>
+            <td><span class="risk medium">67</span></td>
             <td>true</td>
-            <td>review</td>
+            <td><span class="status review">review</span></td>
           </tr>
         </tbody>
       </table>
@@ -72,12 +72,11 @@
 .dashboard {
   padding: 32px;
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
+  background: linear-gradient(to bottom, #f5f7fb, #ffffff);
   min-height: 100vh;
 }
 
 .title  {
-  margin-bottom: 20px;
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 24px;
@@ -87,7 +86,7 @@
 /* CARDS */
 .cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
   margin-bottom: 28px;  
 }
@@ -109,12 +108,15 @@
   font-size: 14px;
   margin-bottom: 8px;
   color: #6b7280;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
 }
 
 .card p {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   color: #111827;
+  margin-top: 6px;
 }
 
 /* TABLE */
@@ -142,6 +144,47 @@ td {
   border-top: 1px solid #f1f1f1;
   font-size: 14px;
   color: #111827;
+}
+
+/* STATUS */
+.status {
+  padding: 4px 10px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.clean {
+  background: #e7f8ee;
+  color: #1f7a3f;
+}
+
+.flagged {
+  background: #fde8e8;
+  color: #b42318;
+}
+
+.review {
+  background: #fff7e6;
+  color: #b45309;
+}
+
+/* RISK */
+.risk {
+  font-weight: 700;
+}
+
+.low {
+  color: #1f7a3f;
+}
+
+.medium {
+  color: #d87b34;
+}
+
+.high {
+  color: #b42318;
 }
 
 </style>
