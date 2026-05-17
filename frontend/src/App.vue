@@ -67,3 +67,66 @@
     </div>
   </div>
 </template>
+
+<style>
+.dashboard {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background: #f7f7f7;
+  min-height: 100vh;
+}
+
+.title  {
+  margin-bottom: 20px;
+}
+
+/* CARDS */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 25px;  
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.card h2 {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.card p {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* TABLE */
+.table-wrapper {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+th {
+  background: #fafafa;
+}
+
+</style>
