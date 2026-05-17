@@ -96,11 +96,12 @@
   padding: 18px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: transform 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
   cursor: pointer;
 }
 
@@ -144,6 +145,15 @@ td {
   border-top: 1px solid #f1f1f1;
   font-size: 14px;
   color: #111827;
+}
+
+td:nth-child(3) {
+  font-variant-numeric: tabular-nums;
+}
+
+tbody tr:hover {
+  background: #f9fafb;
+  cursor: pointer;
 }
 
 /* STATUS */
