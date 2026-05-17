@@ -70,48 +70,59 @@
 
 <style>
 .dashboard {
-  padding: 20px;
+  padding: 32px;
   font-family: Arial, sans-serif;
-  background: #f7f7f7;
+  background: #f4f6f8;
   min-height: 100vh;
 }
 
 .title  {
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  color: #1f2937;
 }
 
 /* CARDS */
 .cards {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 25px;  
+  gap: 16px;
+  margin-bottom: 28px;  
 }
 
 .card {
   background: white;
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 18px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  cursor: pointer;
 }
 
 .card h2 {
   font-size: 14px;
-  margin-bottom: 10px;
-  color: #555;
+  margin-bottom: 8px;
+  color: #6b7280;
 }
 
 .card p {
-  font-size: 24px;
-  font-weight: bold;
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
 }
 
 /* TABLE */
 .table-wrapper {
   background: white;
-  padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
 table {
@@ -119,14 +130,18 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th {
   text-align: left;
-  padding: 12px;
-  border-bottom: 1px solid #eee;
+  font-size: 12px;
+  color: #6b7280;
+  padding-bottom: 10px;
 }
 
-th {
-  background: #fafafa;
+td {
+  padding: 12px 0;
+  border-top: 1px solid #f1f1f1;
+  font-size: 14px;
+  color: #111827;
 }
 
 </style>
