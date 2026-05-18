@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, onMounted } from 'vue';
+  import { ref, onMounted, computed } from 'vue';
   
   const stats = ref({})
   const risks = ref([])
@@ -22,6 +22,24 @@
     if (risk >= 50) return 'medium';
     return 'low';
   }
+
+  const riskStats = computed(() => {
+    const total = risks.value.length;
+    const low = risks.value.filter(r => r.risk < 50).length;
+    const medium = risks.value.filter(r => r.risk >= 50 && r.risk < 80).length;
+    const high = risks.value.filter(r => r.risk >= 80).length; 
+
+    return { low, medium, high, total }
+  })
+
+  const vpnStats = computed(() => {
+    const total = risks.value.length;
+    const vpn = risks.value.filter(r => r.vpn).length;
+    const noVpn = total - vpn;
+
+    return { vpn, noVpn, total }
+  })
+
 </script>
 
 <template>
@@ -69,13 +87,34 @@
     <div class="chart-row">
       <div class="chart-box">
         <h3>Risk Distribution</h3>
-        <div class="demo-bar high"></div>
-        <div class="demo-bar medium"></div>
-        <div class="demo-bar low"></div>
+        <div class="demo-bar high"
+          :style="{ width: (riskStats.high / riskStats.total * 100) + '%' }">
+        </div>
+
+        <div class="demo-bar medium"
+          :style="{ width: (riskStats.medium / riskStats.total * 100) + '%' }">
+        </div>
+
+        <div class="demo-bar low"
+          :style="{ width: (riskStats.low / riskStats.total * 100) + '%' }">
+        </div>
+        <div class="risk-labels">
+          <span>High: {{ riskStats.high }}</span>
+          <span>Medium: {{ riskStats.medium }}</span>
+          <span>Low: {{ riskStats.low }}</span>
+        </div>
       </div>
       <div class="chart-box">
         <h3>VPN Activity</h3>
-        <div class="circle-mock"></div>
+        <div class="vpn-bar">
+          <div class="vpn-yes" :style="{ width: vpnStats.vpn / vpnStats.total * 100 + '%' }"></div>
+          <div class="vpn-no" :style="{ width: vpnStats.noVpn / vpnStats.total * 100 + '%' }"></div>
+        </div>
+
+        <div class="vpn-labels">
+          <span>VPN: {{ vpnStats.vpn }}</span>
+          <span>No VPN: {{ vpnStats.noVpn }}</span>
+        </div>
       </div>
     </div>
     <!-- TABLE -->
@@ -110,6 +149,7 @@
 </template>
 
 <style>
+/* HEADER */
 .topbar {
   display: flex;
   justify-content: space-between;
@@ -224,12 +264,48 @@
 .demo-bar.medium { background: #d87b34; width: 55%; }
 .demo-bar.low { background: #1f7a3f; width: 30%; }
 
+.risk-labels {
+  display: flex;
+  justify-content: start;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 8px;
+  gap: 10px;
+  color: black;
+}
+
 .circle-mock {
   width: 80px;
   height: 80px;
   border-radius: 50%;
   background: #f1f5f9;
   margin-top: 20px;;
+}
+
+.vpn-bar {
+  display: flex;
+  height: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #e5e7eb;
+  margin-top: 12px;
+}
+
+.vpn-yes {
+  background: #b42318;
+}
+
+.vpn-no {
+  background: #1f7a3f;
+}
+
+.vpn-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 8px;
+  color: black;
 }
 
 /* TABLE */
