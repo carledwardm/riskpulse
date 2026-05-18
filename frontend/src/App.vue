@@ -149,6 +149,19 @@
 </template>
 
 <style>
+/* FONTS */
+body {
+  font-family: "Inter", sans-serif;
+  background: #f6f8fc;
+}
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+p, td, span {
+  font-weight: 400;
+}
 /* HEADER */
 .topbar {
   display: flex;
@@ -190,7 +203,6 @@
 /* DASHBOARD */
 .dashboard {
   padding: 32px;
-  font-family: Arial, sans-serif;
   background: linear-gradient(to bottom, #f5f7fb, #ffffff);
   min-height: 100vh;
 }
@@ -214,6 +226,7 @@
   background: white;
   padding: 18px;
   border-radius: 12px;
+  border: 1px solid #eef0f4;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   transition: all 0.2s ease;
 }
@@ -249,6 +262,7 @@
 
 .chart-box {
   background: white;
+  border: 1px solid #eef0f4;
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
@@ -311,6 +325,7 @@
 /* TABLE */
 .table-wrapper {
   background: white;
+  border: 1px solid #eef0f4;
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
