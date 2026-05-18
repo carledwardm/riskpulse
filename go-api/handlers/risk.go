@@ -7,6 +7,7 @@ import (
 
 func RiskHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	data := map[string]any{
 		"stats": map[string]any{
