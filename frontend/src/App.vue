@@ -1,3 +1,22 @@
+<script setup>
+  import { ref, onMounted } from 'vue';
+  
+  const stats = ref({})
+  const risks = ref([])
+
+  async function fetchRiskData() {
+    const response = await fetch('http://localhost:8080/risk')
+    const data = await response.json();
+
+    stats.value = data.stats
+    risks.value = data.risks
+  }
+
+  onMounted(() => {
+    fetchRiskData()
+  })
+  </script>
+
 <template>
   <div class="dashboard">
     <h1 class="title">Risk Dashboard</h1>
