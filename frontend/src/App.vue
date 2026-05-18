@@ -15,6 +15,13 @@
   onMounted(() => {
     fetchRiskData()
   })
+
+  function getRiskClass(risk) {
+    if (risk >= 80) return 'high';
+    if (risk >= 50) return 'medium';
+    return 'low';
+  }
+
   </script>
 
 <template>
@@ -25,22 +32,22 @@
      <div class="cards">
       <div class="card">
         <h2>Threat Requests</h2>
-        <p>128</p>
+        <p>{{ stats.threat_requests }}</p>
       </div>
 
       <div class="card">
         <h2>VPN Detections</h2>
-        <p>42</p>
+        <p>{{ stats.vpn_detections }}</p>
       </div>
 
       <div class="card">
         <h2>Fraud Attempts</h2>
-        <p>19</p>
+        <p>{{ stats.fraud_attempts }}</p>
       </div>
 
       <div class="card">
         <h2>Risk Alerts</h2>
-        <p>7</p>
+        <p>{{ stats.risk_alerts }}</p>
       </div>
      </div>
     
@@ -58,28 +65,16 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td>192.168.1.0</td>
-            <td>US</td>
-            <td><span class="risk high">82</span></td>
-            <td>true</td>
-            <td><span class="status flagged">flagged</span></td>
-          </tr>
-
-          <tr>
-            <td>10.0.0.5</td>
-            <td>UK</td>
-            <td><span class="risk low">35</span></td>
-            <td>false</td>
-            <td><span class="status clean">clean</span></td>
-          </tr>
-
-          <tr>
-            <td>172.16.0.9</td>
-            <td>DE</td>
-            <td><span class="risk medium">67</span></td>
-            <td>true</td>
-            <td><span class="status review">review</span></td>
+          <tr v-for="item in risks" :key="item.ip">
+            <td>{{ item.ip }}</td>
+            <td>{{ item.country }}</td>
+            <td><span :class="['risk', getRiskClass(item.risk)]">{{ item.risk }}</span></td>
+            <td>
+              <span :class="['vpn', item.vpn ? 'yes-vpn' : 'no-vpn']">
+                {{ item.vpn ? 'YES' : 'NO' }}
+              </span>
+            </td>
+            <td><span :class="['status', item.status]">{{ item.status }}</span></td>
           </tr>
         </tbody>
       </table>
@@ -197,6 +192,19 @@ tbody tr:hover {
 .review {
   background: #fff7e6;
   color: #b45309;
+}
+
+/* VPN */
+.vpn {
+  font-weight: 600;
+}
+
+.yes-vpn {
+  color: #b42318;
+}
+
+.no-vpn {
+  color: #1f7a3f;
 }
 
 /* RISK */
