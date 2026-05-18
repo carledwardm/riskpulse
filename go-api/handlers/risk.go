@@ -12,9 +12,9 @@ func RiskHandler(w http.ResponseWriter, r *http.Request) {
 	data := map[string]any{
 		"stats": map[string]any{
 			"threat_requests": 128,
-			"vpn_detections":  42,
+			"vpn_detections":  10,
 			"fraud_attempts":  19,
-			"risk_alerts":     7,
+			"risk_alerts":     10,
 		},
 
 		"risks": []map[string]any{
@@ -101,6 +101,41 @@ func RiskHandler(w http.ResponseWriter, r *http.Request) {
 				"risk":    82,
 				"vpn":     true,
 				"status":  "flagged",
+			},
+			{
+				"ip":      "104.16.243.5",
+				"country": "CA",
+				"risk":    28,
+				"vpn":     false,
+				"status":  "clean",
+			},
+			{
+				"ip":      "46.101.177.12",
+				"country": "SG",
+				"risk":    52,
+				"vpn":     true,
+				"status":  "review",
+			},
+			{
+				"ip":      "176.32.103.205",
+				"country": "JP",
+				"risk":    96,
+				"vpn":     true,
+				"status":  "flagged",
+			},
+			{
+				"ip":      "185.60.216.35",
+				"country": "IE",
+				"risk":    10,
+				"vpn":     false,
+				"status":  "clean",
+			},
+			{
+				"ip":      "91.241.19.88",
+				"country": "PL",
+				"risk":    72,
+				"vpn":     true,
+				"status":  "review",
 			},
 		},
 	}
