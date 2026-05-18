@@ -87,14 +87,15 @@
     <div class="chart-row">
       <div class="chart-box">
         <h3>Risk Distribution</h3>
+        <div class="bar-label">High Risk</div>
         <div class="demo-bar high"
           :style="{ width: (riskStats.high / riskStats.total * 100) + '%' }">
         </div>
-
+        <div class="bar-label">Medium Risk</div>
         <div class="demo-bar medium"
           :style="{ width: (riskStats.medium / riskStats.total * 100) + '%' }">
         </div>
-
+        <div class="bar-label">Low Risk</div>
         <div class="demo-bar low"
           :style="{ width: (riskStats.low / riskStats.total * 100) + '%' }">
         </div>
@@ -154,6 +155,7 @@ body {
   font-family: "Inter", sans-serif;
   background: #f6f8fc;
 }
+
 h1, h2, h3 {
   font-weight: 600;
   letter-spacing: -0.02em;
@@ -170,6 +172,14 @@ p, td, span {
   padding: 14px 32px;
   background: white;
   border-bottom: 1px solid #eee;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
 }
 
 .topbar-right {
@@ -222,6 +232,12 @@ p, td, span {
   margin-bottom: 28px;  
 }
 
+@media (max-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
 .card {
   background: white;
   padding: 18px;
@@ -260,6 +276,12 @@ p, td, span {
   margin-bottom: 24px;
 }
 
+@media (max-width: 768px) {
+  .chart-row {
+    grid-template-columns: 1fr;
+  }
+}
+
 .chart-box {
   background: white;
   border: 1px solid #eef0f4;
@@ -268,10 +290,15 @@ p, td, span {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
 }
 
+.bar-label {
+  font-size: 12px;
+}
+
 .demo-bar {
   height: 10px;
   margin: 8px 0;
   border-radius: 6px;
+  transition: width 0.6s ease;
 }
 
 .demo-bar.high { background: #b42318; width: 80%; }
