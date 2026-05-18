@@ -21,10 +21,18 @@
     if (risk >= 50) return 'medium';
     return 'low';
   }
-
-  </script>
+</script>
 
 <template>
+
+  <header class="topbar">
+    <div class="brand">RiskPulse</div>
+    <div class="status">
+      <span class="dot"></span>
+        API Connected
+    </div>
+  </header>
+
   <div class="dashboard">
     <h1 class="title">Risk Dashboard</h1>
   
@@ -50,7 +58,20 @@
         <p>{{ stats.risk_alerts }}</p>
       </div>
      </div>
-    
+
+    <!-- CHART ROW-->
+    <div class="chart-row">
+      <div class="chart-box">
+        <h3>Risk Distribution</h3>
+        <div class="demo-bar high"></div>
+        <div class="demo-bar medium"></div>
+        <div class="demo-bar low"></div>
+      </div>
+      <div class="chart-box">
+        <h3>VPN Activity</h3>
+        <div class="circle-mock"></div>
+      </div>
+    </div>
     <!-- TABLE -->
     <div class="table-wrapper">
       <table>
@@ -83,6 +104,30 @@
 </template>
 
 <style>
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+  background: white;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
 .dashboard {
   padding: 32px;
   font-family: Arial, sans-serif;
@@ -132,6 +177,39 @@
   font-weight: 800;
   color: #111827;
   margin-top: 6px;
+}
+
+/* CHART ROW */
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.chart-box {
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.demo-bar {
+  height: 10px;
+  margin: 8px 0;
+  border-radius: 6px;
+}
+
+.demo-bar.high { background: #b42318; width: 80%; }
+.demo-bar.medium { background: #d87b34; width: 55%; }
+.demo-bar.low { background: #1f7a3f; width: 30%; }
+
+.circle-mock {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  margin-top: 20px;;
 }
 
 /* TABLE */
