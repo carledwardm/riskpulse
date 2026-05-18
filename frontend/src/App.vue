@@ -151,9 +151,14 @@
 
 <style>
 /* FONTS */
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: "Inter", sans-serif;
   background: #f6f8fc;
+  margin: 0;
 }
 
 h1, h2, h3 {
@@ -172,6 +177,7 @@ p, td, span {
   padding: 14px 32px;
   background: white;
   border-bottom: 1px solid #eee;
+  height: 50px;
 }
 
 @media (max-width: 768px) {
@@ -179,6 +185,7 @@ p, td, span {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    height: 80px;
   }
 }
 
@@ -212,15 +219,21 @@ p, td, span {
 
 /* DASHBOARD */
 .dashboard {
-  padding: 32px;
+  padding: 25px 32px;
   background: linear-gradient(to bottom, #f5f7fb, #ffffff);
-  min-height: 100vh;
+  min-height: calc(100vh - 50px);
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    min-height: calc(100vh - 80px);
+  }
 }
 
 .title  {
   font-size: 24px;
   font-weight: 600;
-  margin-bottom: 24px;
+  margin-bottom: 8px;
   color: #1f2937;
 }
 
@@ -229,7 +242,7 @@ p, td, span {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
-  margin-bottom: 28px;  
+  margin-bottom: 18px;  
 }
 
 @media (max-width: 768px) {
@@ -273,7 +286,7 @@ p, td, span {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 
 @media (max-width: 768px) {
@@ -356,11 +369,14 @@ p, td, span {
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  max-height: 600px;
+  overflow-y: auto;
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 500px;
 }
 
 th {
@@ -369,6 +385,7 @@ th {
   color: #6b7280;
   padding-bottom: 10px;
 }
+
 
 td {
   padding: 12px 0;
