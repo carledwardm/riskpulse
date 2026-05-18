@@ -3,11 +3,12 @@
   
   const stats = ref({})
   const risks = ref([])
+  const lastUpdated = ref('')
 
   async function fetchRiskData() {
     const response = await fetch('http://localhost:8080/risk')
     const data = await response.json();
-
+    lastUpdated.value = new Date().toLocaleTimeString()
     stats.value = data.stats
     risks.value = data.risks
   }
@@ -27,9 +28,14 @@
 
   <header class="topbar">
     <div class="brand">RiskPulse</div>
-    <div class="status">
-      <span class="dot"></span>
+    <div class="topbar-right">
+      <time class="last-updated">
+        Last Updated: {{ lastUpdated }}
+      </time>
+      <div class="status" aria-label="API connection status">
+        <span class="dot" aria-hidden="true"></span>
         API Connected
+      </div>
     </div>
   </header>
 
@@ -111,23 +117,37 @@
   padding: 14px 32px;
   background: white;
   border-bottom: 1px solid #eee;
-  margin-bottom: 20px;
 }
 
-.brand {
-  font-weight: 700;
-  font-size: 18px;
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.last-updated {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
 }
 
 .dot {
+  display: inline-block;
   width: 8px;
   height: 8px;
   background: #22c55e;
   border-radius: 50%;
-  display: inline-block;
   margin-right: 8px;
 }
 
+/* DASHBOARD */
 .dashboard {
   padding: 32px;
   font-family: Arial, sans-serif;
