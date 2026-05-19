@@ -46,7 +46,7 @@
 
   <header class="topbar">
     <div class="brand">
-      <img src="/riskpulse-logo.png" alt="RiskPulse Logo" class="logo">
+      <img src="/logo.png" alt="RiskPulse Logo" class="logo">
     </div>
     <div class="topbar-right">
       <time class="last-updated">
@@ -187,7 +187,7 @@ p, td, span {
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
-    height: 80px;
+    height: 110px;
   }
 }
 
