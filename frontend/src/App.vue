@@ -226,7 +226,7 @@ p, td, span {
 /* DASHBOARD */
 .dashboard {
   padding: 25px 32px;
-  background: linear-gradient(to bottom, #f5f7fb, #ffffff);
+  background: linear-gradient(to right, #1d1d1d 10%, #131313 50%, #1d1d1d 90%);
   min-height: calc(100vh - 70px);
 }
 
@@ -240,7 +240,7 @@ p, td, span {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 8px;
-  color: #1f2937;
+  color: #ffffff;
 }
 
 /* CARDS */
@@ -248,7 +248,7 @@ p, td, span {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 16px;
-  margin-bottom: 18px;  
+  margin-bottom: 18px; 
 }
 
 @media (max-width: 768px) {
@@ -258,12 +258,15 @@ p, td, span {
 }
 
 .card {
-  background: white;
+  background: linear-gradient(to bottom right, #ffffff 65%, #efeff3);
   padding: 18px;
   border-radius: 12px;
-  border: 1px solid #eef0f4;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  transition: all 0.2s ease;
+  border: 1px solid #e7ebf2;
+  box-shadow:
+  0 1px 2px rgba(0,0,0,0.04),
+  0 6px 14px rgba(0,0,0,0.06); 
+  transition: all 0.2s ease-in-out;
+  backdrop-filter: blur(8px);
 }
 
 .card:hover {
@@ -307,6 +310,8 @@ p, td, span {
   padding: 16px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  background: linear-gradient(to bottom right, #ffffff 65%, #efeff3);
+
 }
 
 .bar-label {
@@ -377,6 +382,8 @@ p, td, span {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   max-height: 600px;
   overflow-y: auto;
+  background: linear-gradient(to bottom right, #ffffff 65%, #efeff3);
+
 }
 
 table {
