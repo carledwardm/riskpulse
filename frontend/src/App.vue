@@ -45,7 +45,9 @@
 <template>
 
   <header class="topbar">
-    <div class="brand">RiskPulse</div>
+    <div class="brand">
+      <img src="/riskpulse-logo.png" alt="RiskPulse Logo" class="logo">
+    </div>
     <div class="topbar-right">
       <time class="last-updated">
         Last Updated: {{ lastUpdated }}
@@ -177,7 +179,7 @@ p, td, span {
   padding: 14px 32px;
   background: white;
   border-bottom: 1px solid #eee;
-  height: 50px;
+  height: 70px;
 }
 
 @media (max-width: 768px) {
@@ -187,6 +189,10 @@ p, td, span {
     gap: 8px;
     height: 80px;
   }
+}
+
+.logo {
+  width: 200px;
 }
 
 .topbar-right {
@@ -221,7 +227,7 @@ p, td, span {
 .dashboard {
   padding: 25px 32px;
   background: linear-gradient(to bottom, #f5f7fb, #ffffff);
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 70px);
 }
 
 @media (max-width: 768px) {
