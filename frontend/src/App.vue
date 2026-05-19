@@ -204,9 +204,6 @@ p, td, span {
   font-family: "Inter", sans-serif;
   background: linear-gradient(to bottom right, #ffffff 65%, #efeff3);
   border-right: 1px solid #e7ebf2;
-  box-shadow:
-    0 1px 2px rgba(0, 0, 0, 0.04),
-    0 6px 14px rgba(0, 0, 0, 0.06);
 }
 
 .sidebar-brand {
@@ -328,14 +325,12 @@ p, td, span {
   min-height: 100vh;
 }
 
-@keyframes fadeUp {
+@keyframes fade {
   from {
     opacity: 0;
-    transform: translateY(24px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
   }
 }
 
@@ -343,7 +338,7 @@ p, td, span {
 .card,
 .chart-box,
 .table-wrapper {
-  animation: fadeUp 0.55s ease-out both;
+  animation: fade 0.55s ease-out both;
 }
 
 .title {
@@ -396,16 +391,12 @@ p, td, span {
   padding: 18px;
   border-radius: 12px;
   border: 1px solid #e7ebf2;
-  box-shadow:
-  0 1px 2px rgba(0,0,0,0.04),
-  0 6px 14px rgba(0,0,0,0.06); 
   transition: all 0.2s ease-in-out;
   backdrop-filter: blur(8px);
 }
 
 .card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
   cursor: pointer;
 }
 
@@ -443,7 +434,6 @@ p, td, span {
   border: 1px solid #eef0f4;
   padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   background: linear-gradient(to bottom right, #ffffff 65%, #efeff3);
 
 }
@@ -513,7 +503,6 @@ p, td, span {
   border: 1px solid #eef0f4;
   padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
   max-height: 600px;
   overflow-y: auto;
   background: linear-gradient(to bottom right, #ffffff 65%, #efeff3);
