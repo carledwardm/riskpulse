@@ -294,6 +294,12 @@ p, td, span {
   margin-bottom: 12px;
 }
 
+@media (max-width: 768px) {
+  .dashboard-meta {
+    justify-content: start;
+  }
+}
+
 .last-updated {
   font-size: 12px;
   color: #ffffff;
