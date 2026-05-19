@@ -40,26 +40,44 @@
     return { vpn, noVpn, total }
   })
 
+  const navItems = [
+    'Dashboard',
+    'Team',
+    'Analytics',
+    'Completed',
+    'Settings',
+  ]
+
 </script>
 
 <template>
 
-  <header class="topbar">
-    <div class="brand">
-      <img src="/logo.png" alt="RiskPulse Logo" class="logo">
-    </div>
-    <div class="topbar-right">
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <img src="/logo.png" alt="RiskPulse Logo" class="logo">
+      </div>
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a
+          v-for="item in navItems"
+          :key="item"
+          href="#"
+          class="nav-item"
+          @click.prevent
+        >{{ item }}</a>
+      </nav>
+    </aside>
+
+    <div class="dashboard">
+    <div class="dashboard-meta">
       <time class="last-updated">
         Last Updated: {{ lastUpdated }}
       </time>
-      <div class="status" aria-label="API connection status">
+      <div class="api-status" aria-label="API connection status">
         <span class="dot" aria-hidden="true"></span>
         API Connected
       </div>
     </div>
-  </header>
-
-  <div class="dashboard">
     <h1 class="title">Risk Dashboard</h1>
   
     <!-- CARDS -->
@@ -148,6 +166,7 @@
         </tbody>
       </table>
     </div>
+    </div>
   </div>
 </template>
 
@@ -171,47 +190,124 @@ h1, h2, h3 {
 p, td, span {
   font-weight: 400;
 }
-/* HEADER */
-.topbar {
+/* APP SHELL & SIDEBAR */
+.app-shell {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 14px 32px;
-  background: white;
-  border-bottom: 1px solid #eee;
-  height: 70px;
+  min-height: 100vh;
+}
+
+.sidebar {
+  flex-shrink: 0;
+  width: 220px;
+  min-height: 100vh;
+  padding: 20px 16px;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(to bottom right, #ffffff 65%, #efeff3);
+  border-right: 1px solid #e7ebf2;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 6px 14px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-brand {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e7ebf2;
+}
+
+.sidebar .logo {
+  width: 100%;
+  max-width: 180px;
+  display: block;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.nav-item {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-family: "Inter", sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-item:hover {
+  background: rgba(17, 24, 39, 0.06);
+  color: #111827;
+  transform: translateX(3px);
 }
 
 @media (max-width: 768px) {
-  .topbar {
+  .app-shell {
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid #e7ebf2;
+    padding: 14px 20px;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
-    gap: 8px;
-    height: 110px;
+    gap: 12px;
+  }
+
+  .sidebar-brand {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .sidebar .logo {
+    max-width: 140px;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .nav-item {
+    padding: 8px 12px;
+  }
+
+  .nav-item:hover {
+    transform: translateY(-2px);
   }
 }
 
-.logo {
-  width: 200px;
-}
-
-.topbar-right {
+.dashboard-meta {
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   gap: 16px;
+  margin-bottom: 12px;
 }
 
 .last-updated {
   font-size: 12px;
-  color: #6b7280;
+  color: #ffffff;
 }
 
-.status {
+.api-status {
   display: flex;
   align-items: center;
   font-size: 13px;
   font-weight: 500;
-  color: #111827;
+  color: #ffffff;
 }
 
 .dot {
@@ -225,15 +321,11 @@ p, td, span {
 
 /* DASHBOARD */
 .dashboard {
+  flex: 1;
+  min-width: 0;
   padding: 25px 32px;
   background: linear-gradient(to right, #1d1d1d 10%, #131313 50%, #1d1d1d 90%);
-  min-height: calc(100vh - 70px);
-}
-
-@media (max-width: 768px) {
-  .dashboard {
-    min-height: calc(100vh - 80px);
-  }
+  min-height: 100vh;
 }
 
 .title  {
