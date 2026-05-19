@@ -6,7 +6,7 @@
   const lastUpdated = ref('')
 
   async function fetchRiskData() {
-    const response = await fetch('http://localhost:8080/risk')
+    const response = await fetch('https://riskpulse-production-efb9.up.railway.app/risk')
     const data = await response.json();
     lastUpdated.value = new Date().toLocaleTimeString()
     stats.value = data.stats
