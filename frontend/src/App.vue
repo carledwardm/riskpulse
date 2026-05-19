@@ -328,11 +328,53 @@ p, td, span {
   min-height: 100vh;
 }
 
-.title  {
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title,
+.card,
+.chart-box,
+.table-wrapper {
+  animation: fadeUp 0.55s ease-out both;
+}
+
+.title {
   font-size: 24px;
   font-weight: 600;
   margin-bottom: 8px;
   color: #ffffff;
+  animation-delay: 0.05s;
+}
+
+.cards .card:nth-child(1) { animation-delay: 0.12s; }
+.cards .card:nth-child(2) { animation-delay: 0.2s; }
+.cards .card:nth-child(3) { animation-delay: 0.28s; }
+.cards .card:nth-child(4) { animation-delay: 0.36s; }
+
+.chart-row .chart-box:nth-child(1) { animation-delay: 0.44s; }
+.chart-row .chart-box:nth-child(2) { animation-delay: 0.52s; }
+
+.table-wrapper {
+  animation-delay: 0.6s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .title,
+  .card,
+  .chart-box,
+  .table-wrapper {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* CARDS */
