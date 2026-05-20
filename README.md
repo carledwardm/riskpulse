@@ -47,4 +47,4 @@ Static JSON risk dataset
 
 ## Live Preview
 
-https://riskpulse-git-main-carl-millards-projects.vercel.app/
+https://riskpulse-theta.vercel.app/
